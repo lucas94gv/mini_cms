@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: mini_cms_development
+  host: localhost
+  port: 5432
+  username: <%= Rails.application.credentials.user_bd %>
+  password: <%= Rails.application.credentials.pass_bd %>
+
+test:
+  <<: *default
+  database: mini_cms_test
+  username: <%= Rails.application.credentials.user_bd %>
+  password: <%= Rails.application.credentials.pass_bd %>
+    
+production:
+  <<: *default
+  database: mini_cms_production
+  username: mini_cms
+  password: <%= ENV['MINI_CMS_DATABASE_PASSWORD'] %>
