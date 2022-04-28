@@ -8,6 +8,7 @@ gem 'good_job', '~> 2.14', '>= 2.14.1'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'bulma-rails', '~> 0.9.1'
 gem 'shrine', '~> 3.4'
+gem 'ancestry', '~> 4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.7'

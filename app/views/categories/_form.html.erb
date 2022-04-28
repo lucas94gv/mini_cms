@@ -1,0 +1,5 @@
+<%= form_with model: @category do |f| %>
+    <%= f.text_field :name, required: true %>
+    <%= f.number_field :position %>
+    <%= f.submit "Guardar" %>
+<% end %>
