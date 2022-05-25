@@ -1,5 +1,10 @@
 <%= form_with model: @category do |f| %>
-    <%= f.text_field :name, required: true %>
-    <%= f.number_field :position %>
+    Nombre: <%= f.text_field :name, required: true %>
+    <br>
+    Posición: <%= f.number_field :position %>
+    <br>
+    <!--Ancestry: <%#= f.number_field :ancestry %>-->
+    <br>
     <%= f.submit "Guardar" %>
 <% end %>
+<%= link_to "Volver a categorías", categories_path %>
