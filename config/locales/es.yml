@@ -1,0 +1,10 @@
+---
+es:
+  categories:
+    create: La categoría se ha creado correctamente
+    delete: La categoría se ha eliminado correctamente
+    update: La categoría se ha actualizado correctamente
+  errors:
+    messages:
+      not_saved: Not saved
+  hello: Hello world

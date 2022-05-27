@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
+gem 'i18n-tasks'
+gem 'rails-i18n'
 gem 'wisper', '~> 2.0'
 gem 'whenever', '~> 1.0'
 gem 'good_job', '~> 2.14', '>= 2.14.1'
