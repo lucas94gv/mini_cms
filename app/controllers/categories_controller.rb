@@ -1,10 +1,10 @@
 class CategoriesController < ApplicationController
   
   before_action :set_category, only: %i[ show edit update destroy ]
-  before_action :category_form, only: %i[ create ]
+  before_action :category_form, only: %i[ create update ]
 
   def index
-    @categories = Category.all
+    @categories = Category.order(created_at: :asc)
   end
 
   def new
@@ -15,11 +15,12 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    category = Categories::Create.new(category_form)
+
+    category = Categories::CreateUpdateCommand.new(category_form)
 
     category.on(:ok) { 
                         redirect_to categories_path
-                        flash[:success] = 'La categoría se ha creado correctamente'
+                        flash[:success] = t('categories.create')
                      }
 
     category.on(:invalid) {
@@ -31,24 +32,26 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to categories_path, notice: "La categoría se actualizó correctamente." }
-        format.json { render :show, status: :ok, location: @category }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
-    end
+
+    category = Categories::CreateUpdateCommand.new(category_form, @category)
+
+    category.on(:ok) { 
+                        redirect_to categories_path
+                        flash[:success] = t('categories.update')
+                     }
+
+    category.on(:invalid) {
+                            redirect_to categories_path
+                            flash[:error] = @form.errors.first.messages
+                          }
+
+    category.call
   end
 
   def destroy
     @category.destroy
-
-    respond_to do |format|
-      format.html { redirect_to categories_url, notice: "Categoría eliminada correctamente" }
-      format.json { head :no_content }
-    end
+    redirect_to categories_path
+    flash[:success] = t('categories.delete')
   end
 
   private
