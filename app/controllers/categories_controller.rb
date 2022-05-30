@@ -25,7 +25,8 @@ class CategoriesController < ApplicationController
 
     category.on(:invalid) {
                             redirect_to categories_path
-                            flash[:error] = @form.errors.first.messages
+                            #flash[:error] = category
+                            flash[:error] = t('categories.create_error')
                           }
 
     category.call
@@ -42,7 +43,7 @@ class CategoriesController < ApplicationController
 
     category.on(:invalid) {
                             redirect_to categories_path
-                            flash[:error] = @form.errors.first.messages
+                            flash[:error] = t('categories.create_error')
                           }
 
     category.call

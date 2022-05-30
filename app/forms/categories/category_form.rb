@@ -16,9 +16,7 @@ module Categories
         private
 
         def unique_name
-            return false if Category.find_by(name: name).present?
-
-            true
+            errors.add(:name) if Category.exists?(name: name)
         end
     end
 end

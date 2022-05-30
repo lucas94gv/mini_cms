@@ -1,6 +1,6 @@
 module Categories
     class CreateUpdateCommand < Command
-
+        
         def initialize(form, category = nil)
             @form = form
             @category = category

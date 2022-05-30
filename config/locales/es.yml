@@ -2,8 +2,9 @@
 es:
   categories:
     create: La categoría se ha creado correctamente
+    create_error: Nombre o posición repetido
     delete: La categoría se ha eliminado correctamente
-    update: La categoría se ha actualizado correctamente
+    update: La categoría se ha actualizado correctamente    
   errors:
     messages:
       not_saved: Not saved
