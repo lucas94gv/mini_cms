@@ -2,7 +2,7 @@
 es:
   categories:
     create: La categoría se ha creado correctamente
-    create_error: Nombre o posición repetido
+    create_update_error: Nombre o posición repetido
     delete: La categoría se ha eliminado correctamente
     update: La categoría se ha actualizado correctamente    
   errors:

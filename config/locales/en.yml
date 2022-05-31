@@ -2,7 +2,7 @@
 en:
   categories:
     create: The category has been created successfully
-    create_error: Repeated name or position
+    create_update_error: Repeated name or position
     delete: The category has been deleted successfully
     update: The category has been updated successfully
   errors:

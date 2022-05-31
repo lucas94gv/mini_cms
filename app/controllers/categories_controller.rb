@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :category_form, only: %i[ create update ]
 
   def index
-    @categories = Category.order(created_at: :asc)
+    @categories = Category.order(position: :desc)
   end
 
   def new
@@ -25,8 +25,7 @@ class CategoriesController < ApplicationController
 
     category.on(:invalid) {
                             redirect_to categories_path
-                            #flash[:error] = category
-                            flash[:error] = t('categories.create_error')
+                            flash[:error] = t('categories.create_update_error')
                           }
 
     category.call
@@ -43,7 +42,7 @@ class CategoriesController < ApplicationController
 
     category.on(:invalid) {
                             redirect_to categories_path
-                            flash[:error] = t('categories.create_error')
+                            flash[:error] = t('categories.create_update_error')
                           }
 
     category.call
