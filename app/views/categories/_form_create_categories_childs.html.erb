@@ -1,0 +1,6 @@
+<div data-controller="categories">
+   <h1 data-action="click->categories#toggle_form">CREAR CATEGORIA HIJA</h1>
+    <div data-categories-target="form" class="d-n">
+        <%= render(CategoriesFormComponent.new(model: @category_child, ancestry: @category.id)) %>
+    </div>
+</div>

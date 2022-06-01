@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :category_form, only: %i[ create update ]
 
   def index
-    @categories = Category.order(position: :desc)
+    @categories = Category.where(ancestry: nil).order(position: :desc)
   end
 
   def new
@@ -12,6 +12,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @category_child = Category.new
   end
 
   def create
@@ -56,6 +57,9 @@ class CategoriesController < ApplicationController
 
   private
 
+    # ------------------------------------------
+    # Inicializamos un object form de categorías
+    # ------------------------------------------
     def category_form
       Categories::CategoryForm.new(category_params)
     end
@@ -65,6 +69,6 @@ class CategoriesController < ApplicationController
     end
 
     def category_params
-      params.require(:category).permit(:name, :position)
+      params.require(:category).permit(:name, :position, :ancestry)
     end
 end

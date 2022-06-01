@@ -1,0 +1,12 @@
+<%= form_with model: @model do |f| %>        
+    Nombre: <%= f.text_field :name, required: true %>
+    <br>
+    Posición: <%= f.number_field :position %>
+    <br>
+    
+    <% unless @ancestry.nil? %>
+        <%= f.hidden_field :ancestry, value: @ancestry %>
+    <% end %>
+
+    <%= f.submit "Guardar" %>
+<% end %>

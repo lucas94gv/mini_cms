@@ -1,8 +1,7 @@
-<%= form_with model: @category do |f| %>
-    Nombre: <%= f.text_field :name, required: true %>
-    <br>
-    Posición: <%= f.number_field :position %>
-    <br>
-    <%= f.submit "Guardar" %>
-<% end %>
 <%= link_to "Volver a categorías", categories_path %>
+
+<%= render(CategoriesFormComponent.new(model: @category, ancestry: nil)) %>
+
+<br>
+
+<%= render "form_create_categories_childs" %>

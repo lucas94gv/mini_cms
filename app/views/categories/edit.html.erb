@@ -1,1 +1,7 @@
 <%= render "form" %>
+<h1>CATEGORÍAS HIJAS</h1>
+<% if @category.children.count > 0 %>
+    <% @category.children.each do |category| %>
+        <%= category.name %><br>
+    <% end %>
+<% end %>

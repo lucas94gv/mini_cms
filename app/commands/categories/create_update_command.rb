@@ -1,4 +1,11 @@
 module Categories
+
+    #   -----------------------------------------------------------------
+    #   Command que controla la creación o actualización de una categoría
+    #
+    #   Si existe la categoría actualiza, si no la crea
+    #   -----------------------------------------------------------------
+
     class CreateUpdateCommand < Command
         
         def initialize(form, category = nil)
@@ -22,6 +29,9 @@ module Categories
 
         attr_reader :form
 
+        #   -----------------------------------------------------
+        #   Si no existe la categoría se crea, si no se actualiza
+        #   -----------------------------------------------------
         def create_update
             @category.nil? ? create_category : update_category
         end
