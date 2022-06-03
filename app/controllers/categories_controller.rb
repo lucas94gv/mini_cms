@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :category_form, only: %i[ create update ]
 
   def index
-    @categories = Category.where(ancestry: nil).order(position: :desc)
+    @categories = Category.parents.order_acs
   end
 
   def new
@@ -20,7 +20,8 @@ class CategoriesController < ApplicationController
     category = Categories::CreateUpdateCommand.new(category_form)
 
     category.on(:ok) { 
-                        redirect_to categories_path
+                        redirect_to categories_path if category_params[:ancestry].nil?
+                        redirect_to edit_category_path(category_params[:ancestry]) if category_params[:ancestry].present?
                         flash[:success] = t('categories.create')
                      }
 

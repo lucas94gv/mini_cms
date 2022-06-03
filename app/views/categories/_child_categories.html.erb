@@ -1,0 +1,6 @@
+<% if @category.children.present? %>
+    <h1>CATEGORÍAS HIJAS</h1>
+    <% @category.children.each do |category| %>
+        <%= category.name %><br>
+    <% end %>
+<% end %>

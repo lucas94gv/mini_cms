@@ -8,6 +8,10 @@ module Categories
 
     class CreateUpdateCommand < Command
         
+        #   ----------------------------------------------------------------------------
+        #   - Category nil, indica categoria padre
+        #   - Si especificamos otro category en el parámetro, esta será la categoría padre
+        #   ----------------------------------------------------------------------------
         def initialize(form, category = nil)
             @form = form
             @category = category
