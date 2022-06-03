@@ -1,7 +1,3 @@
 <%= link_to "Volver a categorías", categories_path %>
 
 <%= render(Categories::FormComponent.new(model: @category, ancestry: nil)) %>
-
-<br>
-
-<%= render "form_create_categories_childs" %>

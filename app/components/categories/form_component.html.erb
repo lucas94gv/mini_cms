@@ -4,9 +4,7 @@
     Posición: <%= f.number_field :position %>
     <br>
     
-    <% unless @ancestry.nil? %>
-        <%= f.hidden_field :ancestry, value: @ancestry %>
-    <% end %>
+    <%= f.hidden_field :ancestry, value: @ancestry unless @ancestry.nil? %>
 
     <%= f.submit "Guardar" %>
 <% end %>

@@ -5,7 +5,6 @@ module Categories
     #
     #   Si existe la categoría actualiza, si no la crea
     #   -----------------------------------------------------------------
-
     class CreateUpdateCommand < Command
         
         #   ----------------------------------------------------------------------------
@@ -51,8 +50,7 @@ module Categories
         def update_category
             @category.update!(
                 name: form.name,
-                position: form.position,
-                ancestry: form.ancestry
+                position: form.position
             )
         end
     end

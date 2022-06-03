@@ -1,3 +1,5 @@
 <%= render "form" %>
 
-<%= render "child_categories" %>
+<%= render "form_create_categories_childs" if @category.ancestry.nil? %>
+
+<%= render "child_categories" if @category.children.present? %>
