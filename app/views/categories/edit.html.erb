@@ -2,4 +2,10 @@
 
 <%= render "form_create_categories_childs" if @category.ancestry.nil? %>
 
-<%= render "child_categories" if @category.children.present? %>
+<% if @category.children.present? %>
+    <div data-controller="categories">
+        <span data-action="click->categories#toggle_childs">CATEGORÍAS HIJAS</span>        
+
+        <%= render(Categories::ShowChildsComponent.new(category: @category)) if @category.children.present? %>
+    </div>
+<% end %>
