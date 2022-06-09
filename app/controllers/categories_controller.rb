@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   before_action :category_form, only: %i[ create update ]
 
   def index
-    @categories = Category.parents.order_acs
+    @categories = Category.parents.order_asc
   end
 
   def new
