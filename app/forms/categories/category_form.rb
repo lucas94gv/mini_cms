@@ -20,12 +20,15 @@ module Categories
             errors.add(:name) if Category.exists?(name: name)
         end
 
+        #   -------------------------------------------------------------------------------------
+        #   validación para controlar que no se repita la posición según el nivel de la categoría
+        #   -------------------------------------------------------------------------------------
         def unique_position
             case ancestry
             when nil
-                errors.add(:position) if Category.where(ancestry: nil).exists?(position: position)
-            else
-                errors.add(:position) if Category.where(ancestry: ancestry).exists?(position: position)
+                errors.add(:position) if Category.parents.exists?(position: position)
+            else                
+                errors.add(:position) if Category.child_of(ancestry).exists?(position: position)
             end
         end
     end
